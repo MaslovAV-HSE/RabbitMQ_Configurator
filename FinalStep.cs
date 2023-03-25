@@ -32,7 +32,7 @@ namespace Бокеры_сообщений
         //}
         private void btnn_configure_Click(object sender, EventArgs e)
         {
-            btn_cancel.Enabled = false;
+            
             
         }
 
