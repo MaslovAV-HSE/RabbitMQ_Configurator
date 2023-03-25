@@ -10,8 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SaveFiles\" />
-    <Folder Include="LogFiles\" />
+    <Compile Remove="LogFiles\**" />
+    <Compile Remove="SaveFiles\**" />
+    <EmbeddedResource Remove="LogFiles\**" />
+    <EmbeddedResource Remove="SaveFiles\**" />
+    <None Remove="LogFiles\**" />
+    <None Remove="SaveFiles\**" />
   </ItemGroup>
 
   <ItemGroup>
