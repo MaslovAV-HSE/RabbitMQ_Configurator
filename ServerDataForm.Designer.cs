@@ -1,6 +1,6 @@
 ﻿namespace Бокеры_сообщений
 {
-    partial class ConnectToServer
+    partial class ServerDataForm
     {
         /// <summary>
         /// Required designer variable.

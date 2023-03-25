@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Бокеры_сообщений
 {
-    public partial class ConnectToContainer : Form
+    public partial class ContainerDataForm : Form
     {
-        public ConnectToContainer()
+        public ContainerDataForm()
         {
             InitializeComponent();
         }

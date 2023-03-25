@@ -1,6 +1,6 @@
 ﻿namespace Бокеры_сообщений
 {
-    partial class ConnectToContainer
+    partial class ContainerDataForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label4
@@ -43,9 +43,9 @@
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(67, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(308, 35);
+            this.label4.Size = new System.Drawing.Size(347, 35);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Введите данные сервера";
+            this.label4.Text = "Введите данные контейнера";
             // 
             // label3
             // 
@@ -85,25 +85,25 @@
             // 
             this.button2.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(8, 230);
+            this.button2.Location = new System.Drawing.Point(241, 232);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(185, 51);
             this.button2.TabIndex = 10;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_save
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(249, 230);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 51);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Подключиться";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_save.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_save.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_save.Location = new System.Drawing.Point(30, 232);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(185, 51);
+            this.btn_save.TabIndex = 9;
+            this.btn_save.Text = "Сохранить";
+            this.btn_save.UseVisualStyleBackColor = true;
             // 
-            // ConnectToContainer
+            // ContainerDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,9 +114,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "ConnectToContainer";
-            this.Text = "ConnectToContainer";
+            this.Controls.Add(this.btn_save);
+            this.Name = "ContainerDataForm";
+            this.Text = "Данные контейнера";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,6 +130,6 @@
         private TextBox textBox2;
         private TextBox textBox1;
         private Button button2;
-        private Button button1;
+        private Button btn_save;
     }
 }

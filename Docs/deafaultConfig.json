@@ -1,0 +1,113 @@
+{
+  "configurationName": "Deafult configuration",
+  "nodeType": "server",
+  "nodes": [
+
+  ],
+  "networkOptions": [
+    {
+      "configurationName": "num_acceptors.tcp",
+      "interfaceName": "Количество процессов для TCP слушателя",
+      "description": "Количество процессов, которые доступны для прослушки через TCP соединение",
+      "value": "10"
+    },
+    {
+      "configurationName": "socket_writer.gc_threshold",
+      "interfaceName": "Порог для собирателя мусора",
+      "description": "Порог, при котором будет запускаться сборщик мусора. Для 1 Gb - это знаение (1000000000). Для отключения данной функции в значении укажите off",
+      "value": "1000000000"
+    },
+    {
+      "configurationName": "handshake_timeout",
+      "interfaceName": "Время рукопожатия для AMQP",
+      "description": "Максимальное время, за которое должно произойти рукопожатие для AMQP",
+      "value": "10000"
+    },
+    {
+      "configurationName": "reverse_dns_lookups",
+      "interfaceName": "Обратный поиск DNS",
+      "description": "Если введете true, то ввключится данная опция. Она позволяет показывать имя хоста вместо IP адреса",
+      "value": "false"
+    }
+  ],
+  "userOptions": [
+    {
+      "configurationName": "loopback_users.guest",
+      "interfaceName": "Разрешения для пользователя по умолчанию",
+      "description": "Разрешение для пользователя по умолчанию иметь возможность подключаться не только внутри узла (localhost), но и внутри сети. Для подключения по сети укажите false, иначе true",
+      "value": "true"
+    },
+    {
+      "configurationName": "default_vhost",
+      "interfaceName": "Vhost по умолчанию",
+      "description": "Создание vhost по умодчанию",
+      "value": "/"
+    },
+    {
+      "configurationName": "default_user",
+      "interfaceName": "Пользователь по умолчанию",
+      "description": "Имя пользователя, которые создаётся по умолчанию",
+      "value": "guest"
+    },
+    {
+      "configurationName": "default_pass",
+      "interfaceName": "Пароль пользователя по умолчанию",
+      "description": "Пароль, который будет использоваться по умолчанию",
+      "value": "guest"
+    }
+  ],
+  "additionalOptions": [
+    {
+      "configurationName": "heartbeat",
+      "interfaceName": "AMQP тайм-аут",
+      "description": "Устанавливает время для реакции AMQP. Узлы RabbitMQ будут посылать данную реакцию примерно с интервалом (timeout/2) секунд. При двух пропущенных реакция приведут к закрытию связи с клиентом. Не рекомендуется ставить значение ниже 6.",
+      "value": "60"
+    },
+    {
+      "configurationName": "frame_max",
+      "interfaceName": "Фрэйм AMQP",
+      "description": "Установите максимально допустимый размер фрэйма AMQP (в байтах).",
+      "value": "131072"
+    },
+    {
+      "configurationName": "initial_frame_max",
+      "interfaceName": "Изначальный фрэйм AMQP",
+      "description": "Установите максимальный размер фрэйма, который сервер примет, прежде чем произойдет настройка соединения.",
+      "value": "4096"
+    },
+    {
+      "configurationName": "channel_max",
+      "interfaceName": "Количесство каналов при соединении",
+      "description": "Установите максимально допустимое количество каналов на соединение. 0 означает «безограничений».",
+      "value": "128"
+    }
+  ],
+  "resourceOptions": [
+    {
+      "configurationName": "vm_memory_high_watermark.absolute",
+      "interfaceName": "Лимит использования памяти",
+      "description": "Ограничение (в байтах) оперативной памяти, используемой узлом.",
+      "value": "1073741824"
+    },
+    {
+      "configurationName": "memory_monitor_interval",
+      "interfaceName": "Интервал проверки памяти",
+      "description": "Интервал (в миллисекундах), с которым выполняется проверка уровней памяти по водяным знакам.",
+      "value": "2500"
+    },
+    {
+      "configurationName": "disk_free_limit.absolute",
+      "interfaceName": "Лимит на использование свободного  места диска",
+      "description": "Лимит свободного места на диске (в байтах). Как только свободное место на диске достигнет этой нижней границы, будет установлен аварийный сигнал диска.",
+      "value": "50000"
+    }
+  ],
+  "statisticsOptions": [
+    {
+      "configurationName": "collect_statistics_interval",
+      "interfaceName": "Интервал для статистики",
+      "description": "Интервал для сбора статистики. Увеличение этого параметра снизит нагрузку на базу данных управления.",
+      "value": "5000"
+    }
+  ]
+}
