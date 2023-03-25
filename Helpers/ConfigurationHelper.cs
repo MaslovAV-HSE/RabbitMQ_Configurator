@@ -31,5 +31,8 @@ namespace Бокеры_сообщений.Helpers
         // Lists to store all nodes like servers or containers
         public static List<ServerData> serverList = new List<ServerData>();
         public static List<ContainerData> containerList = new List<ContainerData>();
+
+        // Variable to store content of configuration file
+        public static string ConfigContent = "";
     }
 }
