@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Бокеры_сообщений
 {
-    public partial class ConnectToServer : Form
+    public partial class ServerDataForm : Form
     {
-        public ConnectToServer()
+        public ServerDataForm()
         {
             InitializeComponent();
             button1.BackColor = Color.Green;

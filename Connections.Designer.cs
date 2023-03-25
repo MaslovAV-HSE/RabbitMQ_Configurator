@@ -34,11 +34,13 @@
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_apply = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.node_type = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(34, 377);
+            this.btn_cancel.Location = new System.Drawing.Point(662, 377);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(117, 49);
             this.btn_cancel.TabIndex = 0;
@@ -78,7 +80,7 @@
             // 
             // btn_apply
             // 
-            this.btn_apply.Location = new System.Drawing.Point(642, 377);
+            this.btn_apply.Location = new System.Drawing.Point(23, 377);
             this.btn_apply.Name = "btn_apply";
             this.btn_apply.Size = new System.Drawing.Size(117, 49);
             this.btn_apply.TabIndex = 4;
@@ -88,27 +90,47 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(23, 21);
+            this.groupBox1.Location = new System.Drawing.Point(23, 51);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(756, 328);
+            this.groupBox1.Size = new System.Drawing.Size(756, 298);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Доступные подключения";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Тип узлов:";
+            // 
+            // node_type
+            // 
+            this.node_type.AutoSize = true;
+            this.node_type.Location = new System.Drawing.Point(110, 28);
+            this.node_type.Name = "node_type";
+            this.node_type.Size = new System.Drawing.Size(0, 20);
+            this.node_type.TabIndex = 8;
             // 
             // Connections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.node_type);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_apply);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.btd_del);
             this.Controls.Add(this.btn_cancel);
             this.Name = "Connections";
-            this.Text = "Подключения";
+            this.Text = "Конфигуратор сети брокеров RabbitMQ";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -120,5 +142,7 @@
         private Button btn_add;
         private Button btn_apply;
         private GroupBox groupBox1;
+        private Label label1;
+        private Label node_type;
     }
 }

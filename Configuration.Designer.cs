@@ -54,7 +54,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(656, 424);
+            this.btn_cancel.Location = new System.Drawing.Point(797, 424);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(118, 39);
             this.btn_cancel.TabIndex = 5;
@@ -64,11 +64,11 @@
             // 
             // btn_ok
             // 
-            this.btn_ok.Location = new System.Drawing.Point(797, 424);
+            this.btn_ok.Location = new System.Drawing.Point(664, 424);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(118, 39);
             this.btn_ok.TabIndex = 6;
-            this.btn_ok.Text = "Ок";
+            this.btn_ok.Text = "Применить";
             this.btn_ok.UseVisualStyleBackColor = true;
             this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
@@ -82,7 +82,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Configuration";
-            this.Text = "Настройки";
+            this.Text = "Конфигуратор сети брокеров RabbitMQ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Configuration_FormClosing);
             this.ResumeLayout(false);
 
