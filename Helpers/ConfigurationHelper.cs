@@ -32,7 +32,46 @@ namespace Бокеры_сообщений.Helpers
         public static List<ServerData> serverList = new List<ServerData>();
         public static List<ContainerData> containerList = new List<ContainerData>();
 
+        // Lists to store all nodes like servers or containers (their previous state)
+        private static List<ServerData> prevServerList = new List<ServerData>();
+        private static List<ContainerData> prevContainerList = new List<ContainerData>();
+
         // Variable to store content of configuration file
         public static string ConfigContent = "";
+
+        // Function to save state of nodes lists
+        public static void SaveListsState()
+        {
+            prevServerList.Clear();
+            prevContainerList.Clear();
+
+            prevContainerList.AddRange(containerList);
+            prevServerList.AddRange(serverList);
+        }
+
+        // Clear all configuration that was done
+        public static void ClearAllConfiguration()
+        {
+            configurationName = "";
+
+            networkOptions.Clear();
+            networkOptions.Clear();
+            networkOptions.Clear();
+            networkOptions.Clear();
+            networkOptions.Clear();
+
+            serverList.Clear();
+            containerList.Clear();
+        }
+
+        // Rollback node lists changes
+        public static void RollbackNodeListsChanges()
+        {
+            serverList.Clear();
+            containerList.Clear();
+
+            serverList.AddRange(prevServerList);
+            containerList.AddRange(prevContainerList);
+        }
     }
 }

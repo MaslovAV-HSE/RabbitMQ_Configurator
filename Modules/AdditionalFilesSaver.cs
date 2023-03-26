@@ -45,17 +45,17 @@ namespace Бокеры_сообщений.Modules
         {
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
             {
-                return $"\"nodes\": {JsonConvert.SerializeObject(ConfigurationHelper.serverList, settings)},";
+                return $"\"nodes\": {JsonConvert.SerializeObject(ConfigurationHelper.serverList, settings)},\n";
             }
 
             else if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Container)
             {
-                return $"\"nodes\": {JsonConvert.SerializeObject(ConfigurationHelper.containerList, settings)},";
+                return $"\"nodes\": {JsonConvert.SerializeObject(ConfigurationHelper.containerList, settings)},\n";
             }
 
             else
             {
-                return $"\"nodes\": [],";
+                return $"\"nodes\": [],\n";
             }
         }
 
@@ -63,11 +63,11 @@ namespace Бокеры_сообщений.Modules
         {
             string content = "";
 
-            content = content + $"\"networkOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.networkOptions, settings)},";
-            content = content + $"\"userOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.userOptions, settings)},";
-            content = content + $"\"additionalOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.additionalOptions, settings)},";
-            content = content + $"\"resourceOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.resourceOptions, settings)},";
-            content = content + $"\"statisticsOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.statistcsOptions, settings)},";
+            content = content + $"\"networkOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.networkOptions, settings)},\n";
+            content = content + $"\"userOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.userOptions, settings)},\n";
+            content = content + $"\"additionalOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.additionalOptions, settings)},\n";
+            content = content + $"\"resourceOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.resourceOptions, settings)},\n";
+            content = content + $"\"statisticsOptions\": {JsonConvert.SerializeObject(ConfigurationHelper.statistcsOptions, settings)},\n";
 
             return content;
         }
@@ -84,8 +84,8 @@ namespace Бокеры_сообщений.Modules
             string filePath = path + $"\\{DateTime.Now}_{ConfigurationHelper.configurationName}.json";
             string content = "";
 
-            content = content + $"\"configurationName\": {JsonConvert.SerializeObject(ConfigurationHelper.configurationName, settings)},";
-            content = content + $"\"nodeType\": {JsonConvert.SerializeObject(ConfigurationHelper.nodeType, settings)},";
+            content = content + $"\"configurationName\": {JsonConvert.SerializeObject(ConfigurationHelper.configurationName, settings)},\n";
+            content = content + $"\"nodeType\": {JsonConvert.SerializeObject(ConfigurationHelper.nodeType, settings)},\n";
 
             content = content + FormatNodes();
             content = content + FormatOptions();

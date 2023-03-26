@@ -16,27 +16,27 @@ namespace Бокеры_сообщений.Modules
 
             foreach (var option in ConfigurationHelper.networkOptions)
             {
-                content += $"{option.ConfigurationName} = {option.Value}";
+                content += $"{option.ConfigurationName} = {option.Value}\n";
             }
 
             foreach (var option in ConfigurationHelper.userOptions)
             {
-                content += $"{option.ConfigurationName} = {option.Value}";
+                content += $"{option.ConfigurationName} = {option.Value}\n";
             }
 
             foreach (var option in ConfigurationHelper.additionalOptions)
             {
-                content += $"{option.ConfigurationName} = {option.Value}";
+                content += $"{option.ConfigurationName} = {option.Value}\n";
             }
 
             foreach (var option in ConfigurationHelper.resourceOptions)
             {
-                content += $"{option.ConfigurationName} = {option.Value}";
+                content += $"{option.ConfigurationName} = {option.Value}\n";
             }
 
             foreach (var option in ConfigurationHelper.statistcsOptions)
             {
-                content += $"{option.ConfigurationName} = {option.Value}";
+                content += $"{option.ConfigurationName} = {option.Value}\n";
             }
 
             return content;
