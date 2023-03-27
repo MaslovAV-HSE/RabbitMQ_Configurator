@@ -53,7 +53,7 @@ namespace Бокеры_сообщений
                 this.Owner.Show();
             }
             else
-                MessageBox.Show("Некоректные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Некоректно введённые данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool CheckData()

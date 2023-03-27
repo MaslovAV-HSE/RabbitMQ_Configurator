@@ -24,20 +24,25 @@ namespace Бокеры_сообщений
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             ConfigurationHelper.RollbackNodeListsChanges();
-            Configuration conf = new Configuration();
-            conf.Show();
+            this.Owner.Show();
             this.Close();
         }
 
         private void btd_del_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < dataGridView1.SelectedRows.Count; i ++)
-            {
-                if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
-                    ConfigurationHelper.serverList.Remove((Models.ServerData)dataGridView1.SelectedRows[i].DataBoundItem);
-                else
-                    ConfigurationHelper.containerList.Remove((Models.ContainerData)dataGridView1.SelectedRows[i].DataBoundItem);
+            var result = MessageBox.Show("Вы действительно хотите удалить данные", "Удаление данных", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            for (int i = 0; i < dataGridView1.SelectedRows.Count; i ++)
+            {                 
+                if (result == DialogResult.Yes)
+                {
+                    if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
+                        ConfigurationHelper.serverList.Remove((Models.ServerData)dataGridView1.SelectedRows[i].DataBoundItem);
+                    else
+                        ConfigurationHelper.containerList.Remove((Models.ContainerData)dataGridView1.SelectedRows[i].DataBoundItem);
+                }
             }
+
             DataUpdate();
         }
 
@@ -96,36 +101,49 @@ namespace Бокеры_сообщений
 
         private void btn_apply_Click(object sender, EventArgs e)
         {
-            var Final = new FinalStep();
-            Final.Show();
-            this.Close();
-            
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Пожалуйста заполните список узлов", "Список узлов пуст", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var Final = new FinalStep();
+                Final.Show();
+                this.Close();
+            }        
         }
 
         private void Connections_Load(object sender, EventArgs e)
         {
             ConfigurationHelper.SaveListsState();
             BindingSource bindingSource = new BindingSource();
-            dataGridView1.AutoGenerateColumns= true;
-            if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Container)
+            dataGridView1.AutoGenerateColumns = true;
+            if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
             {
-                bindingSource.DataSource = ConfigurationHelper.containerList;
-                label1.Text += " Контейнер";
-                dataGridView1.Rows[0].HeaderCell.Value = "IP адрес";
-                dataGridView1.Rows[1].HeaderCell.Value = "Пароль";
-                dataGridView1.Rows[2].HeaderCell.Value = "Логин";
-                dataGridView1.Rows[3].HeaderCell.Value = "Порт";
-
+                bindingSource.DataSource = ConfigurationHelper.serverList;
+                node_type.Text = "Сервер";
             }
             else
             {
-                bindingSource.DataSource = ConfigurationHelper.serverList;
-                dataGridView1.Rows[0].HeaderCell.Value = "Имя";
-                dataGridView1.Rows[1].HeaderCell.Value = "Порт";
+                bindingSource.DataSource = ConfigurationHelper.containerList;
+                node_type.Text = "Контейнер";
             }
                 
-            
             dataGridView1.DataSource = bindingSource;
+
+            if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
+            {
+                dataGridView1.Columns[0].HeaderText = "IP адрес";
+                dataGridView1.Columns[1].HeaderText = "Пароль";
+                dataGridView1.Columns[2].HeaderText = "Логин";
+                dataGridView1.Columns[3].HeaderText = "Порт";
+            }
+            else
+            {
+                dataGridView1.Columns[0].HeaderText = "Имя";
+                dataGridView1.Columns[1].HeaderText = "Порт";
+            }
+
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
