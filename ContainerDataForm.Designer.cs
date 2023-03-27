@@ -85,23 +85,25 @@
             // 
             this.button2.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(241, 232);
+            this.button2.Location = new System.Drawing.Point(12, 221);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(185, 51);
             this.button2.TabIndex = 10;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btn_save
             // 
             this.btn_save.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_save.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_save.Location = new System.Drawing.Point(30, 232);
+            this.btn_save.Location = new System.Drawing.Point(263, 221);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(185, 51);
             this.btn_save.TabIndex = 9;
             this.btn_save.Text = "Сохранить";
             this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // ContainerDataForm
             // 
@@ -117,6 +119,7 @@
             this.Controls.Add(this.btn_save);
             this.Name = "ContainerDataForm";
             this.Text = "Данные контейнера";
+            this.Load += new System.EventHandler(this.ContainerDataForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

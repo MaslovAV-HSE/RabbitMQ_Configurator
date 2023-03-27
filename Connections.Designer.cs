@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btd_del = new System.Windows.Forms.Button();
             this.btn_edit = new System.Windows.Forms.Button();
@@ -36,6 +37,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.node_type = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.containerDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.containerDataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_cancel
@@ -90,6 +96,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(23, 51);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(756, 298);
@@ -114,6 +121,23 @@
             this.node_type.Size = new System.Drawing.Size(0, 20);
             this.node_type.TabIndex = 8;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(1, 23);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(755, 275);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // containerDataBindingSource
+            // 
+            this.containerDataBindingSource.DataSource = typeof(Бокеры_сообщений.Models.ContainerData);
+            // 
             // Connections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -129,6 +153,10 @@
             this.Controls.Add(this.btn_cancel);
             this.Name = "Connections";
             this.Text = "Конфигуратор сети брокеров RabbitMQ";
+            this.Load += new System.EventHandler(this.Connections_Load);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.containerDataBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,5 +172,7 @@
         private GroupBox groupBox1;
         private Label label1;
         private Label node_type;
+        private DataGridView dataGridView1;
+        private BindingSource containerDataBindingSource;
     }
 }

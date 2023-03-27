@@ -90,10 +90,12 @@ namespace Бокеры_сообщений
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
+            SaveChanges();
             var Connect = new Connections();
             Connect.Owner = this;
             this.Hide();
             Connect.ShowDialog();
+
         }
 
         private void Configuration_Load(object sender, EventArgs e)
@@ -172,6 +174,15 @@ namespace Бокеры_сообщений
 
             //основные
             connectionType.SelectedItem = connectionType.Items[0];
-        }   
+        }
+
+        private void networkTB1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) 
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

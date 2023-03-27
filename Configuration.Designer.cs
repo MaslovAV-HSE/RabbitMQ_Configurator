@@ -244,6 +244,7 @@
             this.networkTB3.Name = "networkTB3";
             this.networkTB3.Size = new System.Drawing.Size(395, 27);
             this.networkTB3.TabIndex = 8;
+            this.networkTB3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label5
             // 
@@ -272,6 +273,7 @@
             this.networkTB2.Name = "networkTB2";
             this.networkTB2.Size = new System.Drawing.Size(395, 27);
             this.networkTB2.TabIndex = 5;
+            this.networkTB2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label3
             // 
@@ -300,6 +302,7 @@
             this.networkTB1.Name = "networkTB1";
             this.networkTB1.Size = new System.Drawing.Size(395, 27);
             this.networkTB1.TabIndex = 2;
+            this.networkTB1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label2
             // 
@@ -488,6 +491,7 @@
             this.additionalTB4.Name = "additionalTB4";
             this.additionalTB4.Size = new System.Drawing.Size(395, 27);
             this.additionalTB4.TabIndex = 11;
+            this.additionalTB4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label18
             // 
@@ -516,6 +520,7 @@
             this.additionalTB3.Name = "additionalTB3";
             this.additionalTB3.Size = new System.Drawing.Size(395, 27);
             this.additionalTB3.TabIndex = 8;
+            this.additionalTB3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label20
             // 
@@ -544,6 +549,7 @@
             this.additionalTB2.Name = "additionalTB2";
             this.additionalTB2.Size = new System.Drawing.Size(395, 27);
             this.additionalTB2.TabIndex = 5;
+            this.additionalTB2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label22
             // 
@@ -572,6 +578,7 @@
             this.additionalTB1.Name = "additionalTB1";
             this.additionalTB1.Size = new System.Drawing.Size(395, 27);
             this.additionalTB1.TabIndex = 2;
+            this.additionalTB1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label24
             // 
@@ -619,6 +626,7 @@
             this.resoursesTB3.Name = "resoursesTB3";
             this.resoursesTB3.Size = new System.Drawing.Size(298, 27);
             this.resoursesTB3.TabIndex = 8;
+            this.resoursesTB3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label28
             // 
@@ -647,6 +655,7 @@
             this.resoursesTB2.Name = "resoursesTB2";
             this.resoursesTB2.Size = new System.Drawing.Size(298, 27);
             this.resoursesTB2.TabIndex = 5;
+            this.resoursesTB2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label30
             // 
@@ -675,6 +684,7 @@
             this.resoursesTB1.Name = "resoursesTB1";
             this.resoursesTB1.Size = new System.Drawing.Size(298, 27);
             this.resoursesTB1.TabIndex = 2;
+            this.resoursesTB1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label32
             // 
@@ -716,6 +726,7 @@
             this.statisticTB1.Name = "statisticTB1";
             this.statisticTB1.Size = new System.Drawing.Size(395, 27);
             this.statisticTB1.TabIndex = 2;
+            this.statisticTB1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label40
             // 
