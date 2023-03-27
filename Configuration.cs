@@ -103,7 +103,7 @@ namespace Бокеры_сообщений
             userCB1.SelectedItem = userCB1.Items[0];
 
             label15.Text = ConfigurationHelper.userOptions[1].InterfaceName;
-            label16.Text = ConfigurationHelper.userOptions[1].Description;
+            label14.Text = ConfigurationHelper.userOptions[1].Description;
             userTB2.Text = ConfigurationHelper.userOptions[1].Value;
 
             label13.Text = ConfigurationHelper.userOptions[2].InterfaceName;

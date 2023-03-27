@@ -111,21 +111,24 @@ namespace Бокеры_сообщений
             {
                 bindingSource.DataSource = ConfigurationHelper.containerList;
                 label1.Text += " Контейнер";
-                dataGridView1.Rows[0].HeaderCell.Value = "IP адрес";
-                dataGridView1.Rows[1].HeaderCell.Value = "Пароль";
-                dataGridView1.Rows[2].HeaderCell.Value = "Логин";
-                dataGridView1.Rows[3].HeaderCell.Value = "Порт";
+                dataGridView1.DataSource = bindingSource;
+                //dataGridView1.Rows[0].HeaderCell.Value = "IP адрес";
+                //dataGridView1.Rows[1].HeaderCell.Value = "Пароль";
+                //dataGridView1.Rows[2].HeaderCell.Value = "Логин";
+                //dataGridView1.Rows[3].HeaderCell.Value = "Порт";
 
             }
             else
             {
                 bindingSource.DataSource = ConfigurationHelper.serverList;
-                dataGridView1.Rows[0].HeaderCell.Value = "Имя";
-                dataGridView1.Rows[1].HeaderCell.Value = "Порт";
+                label1.Text += " Сервер";
+                dataGridView1.DataSource = bindingSource;
+                //dataGridView1.Rows[0].HeaderCell.Value = "Имя";
+                //dataGridView1.Rows[1].HeaderCell.Value = "Порт";
             }
                 
             
-            dataGridView1.DataSource = bindingSource;
+            
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
