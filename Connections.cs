@@ -71,7 +71,7 @@ namespace Бокеры_сообщений
                 sd.Owner = this;
                 this.Hide();
                 sd.ShowDialog();
-                //DataUpdate();
+                
             }
             else
             {
@@ -79,7 +79,7 @@ namespace Бокеры_сообщений
                 cd.Owner = this;
                 this.Hide();
                 cd.ShowDialog();
-                //DataUpdate();
+                
             }
             DataUpdate();
         }
@@ -97,7 +97,7 @@ namespace Бокеры_сообщений
         private void btn_apply_Click(object sender, EventArgs e)
         {
             var Final = new FinalStep();
-            Final.ShowDialog();
+            Final.Show();
             this.Close();
             
         }
