@@ -19,7 +19,7 @@ namespace Бокеры_сообщений.Modules
             ConfigurationHelper.serverList = new List<ServerData>();
             ConfigurationHelper.containerList = new List<ContainerData>();   
 
-            if ((string)jsonObject["nodeType"] == "server")
+            if ((string)jsonObject["nodeType"] == "Server")
             {
                 ConfigurationHelper.nodeType = ConfigurationHelper.NodeType.Server;
 
@@ -35,7 +35,7 @@ namespace Бокеры_сообщений.Modules
                     ConfigurationHelper.serverList.Add(data);
                 }
             }
-            else if ((string)jsonObject["nodeType"] == "container")
+            else if ((string)jsonObject["nodeType"] == "Container")
             {
                 ConfigurationHelper.nodeType = ConfigurationHelper.NodeType.Container;
 
