@@ -54,31 +54,37 @@ namespace Бокеры_сообщений
 
         private void Configuration_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveChanges();
+            
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
+            BaseHelper.LoadedConfig = false;
             ConfigurationHelper.ClearAllConfiguration();
             this.Owner.Show();
-            this.Close();
-            
+            this.Close();          
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            SaveChanges();
-            var Connect = new Connections();
-            this.Close();
-            Connect.Show();
-            
+            if (configName.Text.Length > 0)
+            {
+                SaveChanges();
+                var Connect = new Connections();
+                Connect.Owner = this;
+                this.Hide();
+                Connect.Show();
 
+                SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста заполните имя конфигурации", "Ошибка при заполнении данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Configuration_Load(object sender, EventArgs e)
         {
-            ConfigurationLoader.LoadConfiguration("C:\\Users\\Maslov Alexander\\Source\\Repos\\RabbitMQ_Configurator\\Docs\\deafaultConfig.json");
-
             //Сеть
             label1.Text = ConfigurationHelper.networkOptions[0].InterfaceName;
             label2.Text = ConfigurationHelper.networkOptions[0].Description;

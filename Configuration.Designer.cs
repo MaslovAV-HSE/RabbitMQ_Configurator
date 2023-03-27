@@ -148,6 +148,7 @@
             // 
             // connectionType
             // 
+            this.connectionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.connectionType.FormattingEnabled = true;
             this.connectionType.Items.AddRange(new object[] {
             "Сервер",
@@ -208,6 +209,7 @@
             // 
             // networkCB4
             // 
+            this.networkCB4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.networkCB4.FormattingEnabled = true;
             this.networkCB4.Items.AddRange(new object[] {
             "false",
@@ -349,6 +351,7 @@
             // 
             // userCB1
             // 
+            this.userCB1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.userCB1.FormattingEnabled = true;
             this.userCB1.Items.AddRange(new object[] {
             "false",

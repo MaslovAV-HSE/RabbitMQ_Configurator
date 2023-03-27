@@ -31,7 +31,7 @@ namespace Бокеры_сообщений
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.DialogResult= DialogResult.Cancel;
+            this.DialogResult= DialogResult.Cancel; this.Owner.Show();
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace Бокеры_сообщений
                 
             }
             else
-                MessageBox.Show("Некоректные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Некоректно введённые данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             
         }
         private bool CheckData()

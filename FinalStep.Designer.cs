@@ -35,7 +35,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.statusTextBox = new System.Windows.Forms.RichTextBox();
             this.btn_finish = new System.Windows.Forms.Button();
-            this.btn_begin = new System.Windows.Forms.Button();
+            this.save_conf = new System.Windows.Forms.Button();
+            this.save_log = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,22 +106,33 @@
             this.btn_finish.UseVisualStyleBackColor = true;
             this.btn_finish.Click += new System.EventHandler(this.btn_finish_Click);
             // 
-            // btn_begin
+            // save_conf
             // 
-            this.btn_begin.Location = new System.Drawing.Point(542, 389);
-            this.btn_begin.Name = "btn_begin";
-            this.btn_begin.Size = new System.Drawing.Size(117, 49);
-            this.btn_begin.TabIndex = 7;
-            this.btn_begin.Text = "В начало";
-            this.btn_begin.UseVisualStyleBackColor = true;
-            this.btn_begin.Click += new System.EventHandler(this.btn_begin_Click);
+            this.save_conf.Location = new System.Drawing.Point(177, 389);
+            this.save_conf.Name = "save_conf";
+            this.save_conf.Size = new System.Drawing.Size(153, 49);
+            this.save_conf.TabIndex = 8;
+            this.save_conf.Text = "Сохранить конфигурацию";
+            this.save_conf.UseVisualStyleBackColor = true;
+            this.save_conf.Click += new System.EventHandler(this.save_conf_Click);
+            // 
+            // save_log
+            // 
+            this.save_log.Location = new System.Drawing.Point(18, 389);
+            this.save_log.Name = "save_log";
+            this.save_log.Size = new System.Drawing.Size(153, 49);
+            this.save_log.TabIndex = 9;
+            this.save_log.Text = "Сохранить лог";
+            this.save_log.UseVisualStyleBackColor = true;
+            this.save_log.Click += new System.EventHandler(this.save_log_Click);
             // 
             // FinalStep
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_begin);
+            this.Controls.Add(this.save_log);
+            this.Controls.Add(this.save_conf);
             this.Controls.Add(this.btn_finish);
             this.Controls.Add(this.groupBox1);
             this.Name = "FinalStep";
@@ -139,8 +151,9 @@
         private RichTextBox statusTextBox;
         private Label label2;
         private Label label1;
-        private Button btn_begin;
         private Label node_type;
         private Label config_name;
+        private Button save_conf;
+        private Button save_log;
     }
 }

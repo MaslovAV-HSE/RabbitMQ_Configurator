@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using Бокеры_сообщений.Helpers;
 using Бокеры_сообщений.Modules;
 
 namespace Бокеры_сообщений
@@ -28,7 +29,7 @@ namespace Бокеры_сообщений
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Json files (*.json)|*.json|Text files (*.txt)|*.txt";
+                openFileDialog.Filter = "Json files (*.json)|*.json";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     if (!CheckFile(openFileDialog.FileName))
@@ -37,15 +38,14 @@ namespace Бокеры_сообщений
                     }
                     else
                     {
+                        BaseHelper.LoadedConfig = true;
                         var Config = new Configuration();
                         Config.Owner = this;
                         this.Hide();
                         Config.Show();
                     }
-
                 }
-            }
-            
+            }     
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace Бокеры_сообщений
             var Config = new Configuration();
             Config.Owner= this;
             this.Hide();
-            Config.ShowDialog();
+            Config.Show();
         }
     }
 }

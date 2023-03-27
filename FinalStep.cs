@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Бокеры_сообщений.Helpers;
 using Бокеры_сообщений.Modules;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Бокеры_сообщений
 {
@@ -18,34 +19,28 @@ namespace Бокеры_сообщений
         public FinalStep()
         {
             InitializeComponent();
-            btn_finish.Enabled = false;
+            btn_finish.Enabled = true;
         }
-
 
         private void btn_finish_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-        private void btn_begin_Click(object sender, EventArgs e)
-        {
-            ConfigurationHelper.ClearAllConfiguration();
-            this.Close();
         }
 
         private void FinalStep_Load(object sender, EventArgs e)
         {
             label1.Text += $" {ConfigurationHelper.configurationName}";
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
-                label2.Text += " Сервер";
+                node_type.Text = " Сервер";
             else
-                label2.Text += " Контейнер";
+                node_type.Text = " Контейнер";
 
             var conFile = RabbitMQConfigurationFormatter.CreateConfigurationFile();
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
             {
                 foreach (var server in ConfigurationHelper.serverList)
                 {
-                    var content = $"listeners.tcp.default = {server.Port}" + conFile;
+                    var content = $"listeners.tcp.default = {server.Port}" + "\n" + conFile;
                     var conResult = RabbitMQFileTransferer.ServerTransferConfigurationFile(server.IpAddress, server.UserName, server.Password, content);
                     var recieverResult = RabbitMQFileTransferer.ServerTransferExampleReciever(server.IpAddress, server.UserName, server.Password, server.Port);
                     var senderResult = RabbitMQFileTransferer.ServerTransferExampleSender(server.IpAddress, server.UserName, server.Password, server.Port);
@@ -57,8 +52,8 @@ namespace Бокеры_сообщений
             {
                 foreach (var conteiner in ConfigurationHelper.containerList)
                 {
-                    var content = $"listeners.tcp.default = {conteiner.Port}" + conFile;
-                    var conResult = RabbitMQFileTransferer.ContainerTransferConfigurationFile(conteiner.ContainerName, conFile);
+                    var content = $"listeners.tcp.default = {conteiner.Port}" + "\n" + conFile;
+                    var conResult = RabbitMQFileTransferer.ContainerTransferConfigurationFile(conteiner.ContainerName, content);
                     var recieverResult = RabbitMQFileTransferer.ContainerTransferExampleReciever(conteiner.ContainerName, conteiner.Port);
                     var senderResult = RabbitMQFileTransferer.ContainerTransferExampleSender(conteiner.ContainerName);
                     
@@ -66,10 +61,32 @@ namespace Бокеры_сообщений
                     statusTextBox.Text += $"conteiner: {conteiner.ContainerName} \n{conResult}\n{recieverResult}\n{senderResult}";
                 }
             }
-            AdditionalFilesSaver.SaveConfiguration();
-            AdditionalFilesSaver.SaveLogs(statusTextBox.Text);
         }
 
+        private void save_log_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt";
 
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            string filename = saveFileDialog.FileName;
+            // сохраняем текст в файл
+            File.WriteAllText(filename, statusTextBox.Text);
+        }
+
+        private void save_conf_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Json files (*.json)|*.json";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            string filename = saveFileDialog.FileName;
+            // сохраняем текст в файл
+            File.WriteAllText(filename, AdditionalFilesSaver.SaveConfiguration());
+        }
     }
 }

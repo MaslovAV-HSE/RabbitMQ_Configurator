@@ -24,23 +24,6 @@ namespace Бокеры_сообщений.Modules
             Formatting = Formatting.Indented
         };
 
-        public static void SaveLogs(string content)
-        {
-            string path = Directory.GetCurrentDirectory() + $"\\LogFiles";
-
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            string filePath = path + $"\\{DateTime.Now}_{ConfigurationHelper.configurationName}_log.txt";
-
-            using (StreamWriter sw = File.CreateText(path))
-            {
-                sw.Write(content);
-            }
-        }
-
         private static string FormatNodes()
         {
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
@@ -72,7 +55,7 @@ namespace Бокеры_сообщений.Modules
             return content;
         }
 
-        public static void SaveConfiguration()
+        public static string SaveConfiguration()
         {
             string path = Directory.GetCurrentDirectory() + "\\SaveFiles";
 
@@ -85,12 +68,20 @@ namespace Бокеры_сообщений.Modules
             string content = "";
 
             content = content + $"\"configurationName\": {JsonConvert.SerializeObject(ConfigurationHelper.configurationName, settings)},\n";
-            content = content + $"\"nodeType\": {JsonConvert.SerializeObject(ConfigurationHelper.nodeType, settings)},\n";
+
+            if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
+            {
+                content = content + $"\"nodeType\": {JsonConvert.SerializeObject("Server", settings)},\n";
+            }
+            else
+            {
+                content = content + $"\"nodeType\": {JsonConvert.SerializeObject("Container", settings)},\n";
+            }
 
             content = content + FormatNodes();
             content = content + FormatOptions();
 
-            File.WriteAllText(path, content);
+            return content;
         }
     }
 }
