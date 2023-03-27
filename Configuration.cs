@@ -14,36 +14,11 @@ namespace Бокеры_сообщений
 {
     public partial class Configuration : Form
     {
-        private string filepath;
-
-        Dictionary<int, string[]> group1 = new Dictionary<int, string[]>{
-            {0, new string[]{"наименование 1", "описание 1"} },
-            {1, new string[]{"наименование 2", "описание 2"} },
-            {2, new string[]{"наименование 3", "описание 3"} }
-        };
         public Configuration()
         {
             InitializeComponent();
         }
 
-        public Configuration(string filepath)
-        {
-            InitializeComponent();
-            this.filepath = filepath;
-            //РЕАЛИЗОВАТЬ
-        }
-
-        private void newGoup(int num)
-        {
-            //РЕАЛИЗОВАТЬ
-            foreach (var item in group1)
-            {
-                var name = new Label();
-                var description = new Label();
-                var input = new TextBox();
-
-            }
-        }
 
         private void SaveChanges()
         {
@@ -84,17 +59,19 @@ namespace Бокеры_сообщений
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
+            ConfigurationHelper.ClearAllConfiguration();
             this.Owner.Show();
             this.Close();
+            
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
             SaveChanges();
             var Connect = new Connections();
-            Connect.Owner = this;
-            this.Hide();
-            Connect.ShowDialog();
+            this.Close();
+            Connect.Show();
+            
 
         }
 
@@ -173,7 +150,15 @@ namespace Бокеры_сообщений
             statisticTB1.Text = ConfigurationHelper.statistcsOptions[0].Value;
 
             //основные
-            connectionType.SelectedItem = connectionType.Items[0];
+            if (ConfigurationHelper.NodeType.Server == ConfigurationHelper.nodeType)
+                connectionType.SelectedIndex = 0;
+            else
+                connectionType.SelectedIndex = 1;
+
+            if (BaseHelper.LoadedConfig == true)
+            {
+                connectionType.Enabled = false;
+            }
         }
 
         private void networkTB1_KeyPress(object sender, KeyPressEventArgs e)

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.node_type = new System.Windows.Forms.Label();
+            this.config_name = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.statusTextBox = new System.Windows.Forms.RichTextBox();
             this.btn_finish = new System.Windows.Forms.Button();
             this.btn_begin = new System.Windows.Forms.Button();
-            this.config_name = new System.Windows.Forms.Label();
-            this.node_type = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,22 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Статус";
+            // 
+            // node_type
+            // 
+            this.node_type.AutoSize = true;
+            this.node_type.Location = new System.Drawing.Point(482, 33);
+            this.node_type.Name = "node_type";
+            this.node_type.Size = new System.Drawing.Size(0, 20);
+            this.node_type.TabIndex = 4;
+            // 
+            // config_name
+            // 
+            this.config_name.AutoSize = true;
+            this.config_name.Location = new System.Drawing.Point(159, 33);
+            this.config_name.Name = "config_name";
+            this.config_name.Size = new System.Drawing.Size(0, 20);
+            this.config_name.TabIndex = 3;
             // 
             // label2
             // 
@@ -97,22 +113,7 @@
             this.btn_begin.TabIndex = 7;
             this.btn_begin.Text = "В начало";
             this.btn_begin.UseVisualStyleBackColor = true;
-            // 
-            // config_name
-            // 
-            this.config_name.AutoSize = true;
-            this.config_name.Location = new System.Drawing.Point(159, 33);
-            this.config_name.Name = "config_name";
-            this.config_name.Size = new System.Drawing.Size(0, 20);
-            this.config_name.TabIndex = 3;
-            // 
-            // node_type
-            // 
-            this.node_type.AutoSize = true;
-            this.node_type.Location = new System.Drawing.Point(482, 33);
-            this.node_type.Name = "node_type";
-            this.node_type.Size = new System.Drawing.Size(0, 20);
-            this.node_type.TabIndex = 4;
+            this.btn_begin.Click += new System.EventHandler(this.btn_begin_Click);
             // 
             // FinalStep
             // 
@@ -124,6 +125,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FinalStep";
             this.Text = "Конфигуратор сети брокеров RabbitMQ";
+            this.Load += new System.EventHandler(this.FinalStep_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

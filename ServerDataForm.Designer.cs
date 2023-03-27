@@ -30,15 +30,15 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbPass = new System.Windows.Forms.TextBox();
+            this.tbLog = new System.Windows.Forms.TextBox();
+            this.tbIP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbPort = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -65,26 +65,26 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
+            // tbPass
             // 
-            this.textBox1.Location = new System.Drawing.Point(240, 233);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 27);
-            this.textBox1.TabIndex = 2;
+            this.tbPass.Location = new System.Drawing.Point(240, 233);
+            this.tbPass.Name = "tbPass";
+            this.tbPass.Size = new System.Drawing.Size(185, 27);
+            this.tbPass.TabIndex = 2;
             // 
-            // textBox2
+            // tbLog
             // 
-            this.textBox2.Location = new System.Drawing.Point(240, 188);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(185, 27);
-            this.textBox2.TabIndex = 3;
+            this.tbLog.Location = new System.Drawing.Point(240, 188);
+            this.tbLog.Name = "tbLog";
+            this.tbLog.Size = new System.Drawing.Size(185, 27);
+            this.tbLog.TabIndex = 3;
             // 
-            // textBox3
+            // tbIP
             // 
-            this.textBox3.Location = new System.Drawing.Point(240, 98);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(185, 27);
-            this.textBox3.TabIndex = 4;
+            this.tbIP.Location = new System.Drawing.Point(240, 98);
+            this.tbIP.Name = "tbIP";
+            this.tbIP.Size = new System.Drawing.Size(185, 27);
+            this.tbIP.TabIndex = 4;
             // 
             // label1
             // 
@@ -136,12 +136,12 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Порт";
             // 
-            // textBox4
+            // tbPort
             // 
-            this.textBox4.Location = new System.Drawing.Point(240, 143);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(185, 27);
-            this.textBox4.TabIndex = 9;
+            this.tbPort.Location = new System.Drawing.Point(240, 143);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(185, 27);
+            this.tbPort.TabIndex = 9;
             // 
             // ServerDataForm
             // 
@@ -149,18 +149,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 397);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.tbPort);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbIP);
+            this.Controls.Add(this.tbLog);
+            this.Controls.Add(this.tbPass);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "ServerDataForm";
             this.Text = "ConnectToServer";
+            this.Load += new System.EventHandler(this.ServerDataForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,14 +171,14 @@
 
         private Button button1;
         private Button button2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox tbPass;
+        private TextBox tbLog;
+        private TextBox tbIP;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox tbPort;
     }
 }

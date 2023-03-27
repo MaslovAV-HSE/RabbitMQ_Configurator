@@ -17,12 +17,15 @@ namespace Бокеры_сообщений
         {
             InitializeComponent();
             dataGridView1.SelectionMode= DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect=false;
         }
 
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            this.Owner.Show();
+            ConfigurationHelper.RollbackNodeListsChanges();
+            Configuration conf = new Configuration();
+            conf.Show();
             this.Close();
         }
 
@@ -68,7 +71,7 @@ namespace Бокеры_сообщений
                 sd.Owner = this;
                 this.Hide();
                 sd.ShowDialog();
-                DataUpdate();
+                //DataUpdate();
             }
             else
             {
@@ -76,39 +79,55 @@ namespace Бокеры_сообщений
                 cd.Owner = this;
                 this.Hide();
                 cd.ShowDialog();
-                DataUpdate();
+                //DataUpdate();
             }
+            DataUpdate();
         }
 
         public void DataUpdate()
         {
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = ConfigurationHelper.serverList;
+            if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Container)
+                bindingSource.DataSource = ConfigurationHelper.containerList;
+            else
+                bindingSource.DataSource = ConfigurationHelper.serverList;
             dataGridView1.DataSource = bindingSource;
         }
 
         private void btn_apply_Click(object sender, EventArgs e)
         {
             var Final = new FinalStep();
-            Final.Owner = this;
-            this.Hide();
             Final.ShowDialog();
+            this.Close();
+            
         }
 
         private void Connections_Load(object sender, EventArgs e)
         {
-            ConfigurationHelper.containerList.Add(new Models.ContainerData("124", 123));
+            ConfigurationHelper.SaveListsState();
             BindingSource bindingSource = new BindingSource();
             dataGridView1.AutoGenerateColumns= true;
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Container)
+            {
                 bindingSource.DataSource = ConfigurationHelper.containerList;
+                label1.Text += " Контейнер";
+                dataGridView1.Rows[0].HeaderCell.Value = "IP адрес";
+                dataGridView1.Rows[1].HeaderCell.Value = "Пароль";
+                dataGridView1.Rows[2].HeaderCell.Value = "Логин";
+                dataGridView1.Rows[3].HeaderCell.Value = "Порт";
+
+            }
             else
+            {
                 bindingSource.DataSource = ConfigurationHelper.serverList;
+                dataGridView1.Rows[0].HeaderCell.Value = "Имя";
+                dataGridView1.Rows[1].HeaderCell.Value = "Порт";
+            }
+                
             
             dataGridView1.DataSource = bindingSource;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
         }
     }

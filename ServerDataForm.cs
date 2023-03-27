@@ -23,10 +23,10 @@ namespace Бокеры_сообщений
         public ServerDataForm(ref Models.ServerData server)
         {
             InitializeComponent();
-            textBox3.Text = server.IpAddress;
-            textBox2.Text = server.UserName;
-            textBox1.Text = server.Password;
-            textBox4.Text = server.Port.ToString();
+            tbIP.Text = server.IpAddress;
+            tbLog.Text = server.UserName;
+            tbPass.Text = server.Password;
+            tbPort.Text = server.Port.ToString();
             s = server;
             editMode= true;
             
@@ -38,30 +38,39 @@ namespace Бокеры_сообщений
             {
                 if (editMode)
                 {
-                    s.IpAddress = textBox3.Text;
-                    s.UserName = textBox2.Text;
-                    s.Password = textBox1.Text;
-                    s.Port = Convert.ToInt32(textBox4.Text);
+                    s.IpAddress = tbIP.Text;
+                    s.UserName = tbLog.Text;
+                    s.Password = tbPass.Text;
+                    s.Port = Convert.ToInt32(tbPort.Text);
                 }
                 else {
                     ConfigurationHelper.serverList.Add(
-                            new Models.ServerData(textBox3.Text, textBox2.Text, textBox3.Text, Convert.ToInt32(textBox4.Text)));
+                            new Models.ServerData(tbIP.Text, tbLog.Text, tbIP.Text, Convert.ToInt32(tbPort.Text)));
                 }
 
                     
                 this.DialogResult = DialogResult.OK;
                 this.Owner.Show();
             }
+            else
+                MessageBox.Show("Некоректные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool CheckData()
         {
-            return true;
+            if (!String.IsNullOrWhiteSpace(tbIP.Text) && !String.IsNullOrWhiteSpace(tbLog.Text) &&
+                !String.IsNullOrWhiteSpace(tbPass.Text) && int.TryParse(tbPort.Text, out int port)) return true;
+            return false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel; this.Owner.Show();
+        }
+
+        private void ServerDataForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

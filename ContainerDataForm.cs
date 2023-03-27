@@ -23,8 +23,8 @@ namespace Бокеры_сообщений
         public ContainerDataForm(ref Models.ContainerData container)
         {
             InitializeComponent();
-            textBox1.Text = container.ContainerName;
-            textBox2.Text = container.Port.ToString();
+            tbName.Text = container.ContainerName;
+            tbPort.Text = container.Port.ToString();
             data = container;
             editMode= true;
         }
@@ -39,21 +39,27 @@ namespace Бокеры_сообщений
             if (CheckData())
             {
                 if (editMode) {
-                    data.ContainerName = textBox1.Text;
-                    data.Port = Convert.ToInt32(textBox2.Text);
+                    data.ContainerName = tbName.Text;
+                    data.Port = Convert.ToInt32(tbPort.Text);
                 }
                 else
                 {
-                    ConfigurationHelper.containerList.Add(new Models.ContainerData(textBox1.Text, Convert.ToInt32(textBox2.Text)));
+                    ConfigurationHelper.containerList.Add(new Models.ContainerData(tbName.Text, Convert.ToInt32(tbPort.Text)));
                 }
+                this.DialogResult = DialogResult.OK;
                 this.Owner.Show();
-                this.DialogResult= DialogResult.OK;
+                
             }
+            else
+                MessageBox.Show("Некоректные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             
         }
         private bool CheckData()
         {
-            return true;
+            if (!String.IsNullOrWhiteSpace(tbName.Text) && int.TryParse(tbPort.Text, out int port))
+                return true;
+            return false;
+    
         }
 
         private void ContainerDataForm_Load(object sender, EventArgs e)

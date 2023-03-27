@@ -31,8 +31,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbPort = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -67,19 +67,19 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Порт";
             // 
-            // textBox2
+            // tbName
             // 
-            this.textBox2.Location = new System.Drawing.Point(222, 93);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(185, 27);
-            this.textBox2.TabIndex = 12;
+            this.tbName.Location = new System.Drawing.Point(222, 93);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(185, 27);
+            this.tbName.TabIndex = 12;
             // 
-            // textBox1
+            // tbPort
             // 
-            this.textBox1.Location = new System.Drawing.Point(222, 158);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 27);
-            this.textBox1.TabIndex = 11;
+            this.tbPort.Location = new System.Drawing.Point(222, 158);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(185, 27);
+            this.tbPort.TabIndex = 11;
             // 
             // button2
             // 
@@ -113,8 +113,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.tbPort);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_save);
             this.Name = "ContainerDataForm";
@@ -130,8 +130,8 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox tbName;
+        private TextBox tbPort;
         private Button button2;
         private Button btn_save;
     }
