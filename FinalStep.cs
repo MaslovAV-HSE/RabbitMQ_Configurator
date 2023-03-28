@@ -29,6 +29,9 @@ namespace Бокеры_сообщений
 
         private async void FinalStep_Load(object sender, EventArgs e)
         {
+            WaiForm waiForm = new WaiForm();
+            waiForm.Show();
+            Application.DoEvents();
             label1.Text += $" {ConfigurationHelper.configurationName}";
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
                 node_type.Text = "Сервер";
@@ -42,8 +45,15 @@ namespace Бокеры_сообщений
                 {
                     var content = $"listeners.tcp.default = {server.Port}" + "\n" + conFile;
                     var conResult = RabbitMQFileTransferer.ServerTransferConfigurationFile(server.IpAddress, server.UserName, server.Password, content);
-                    var recieverResult = RabbitMQFileTransferer.ServerTransferExampleReciever(server.IpAddress, server.UserName, server.Password, server.Port);
-                    var senderResult = RabbitMQFileTransferer.ServerTransferExampleSender(server.IpAddress, server.UserName, server.Password, server.Port);
+
+                    var recieverResult = "";
+                    var senderResult = "";
+
+                    if (conResult.StartsWith("Настройка сервера RabbitMQ на"))
+                    {
+                        recieverResult = RabbitMQFileTransferer.ServerTransferExampleReciever(server.IpAddress, server.UserName, server.Password, server.Port);
+                        senderResult = RabbitMQFileTransferer.ServerTransferExampleSender(server.IpAddress, server.UserName, server.Password, server.Port);
+                    }
 
                     statusTextBox.Text += $"Сервер: {server.IpAddress} \n{conResult}\n{recieverResult}\n{senderResult}\n\n";
                 }
@@ -58,8 +68,15 @@ namespace Бокеры_сообщений
                     try
                     {
                         var conResult = await RabbitMQFileTransferer.ContainerTransferConfigurationFile(container.ContainerName, content);
-                        var recieverResult = await RabbitMQFileTransferer.ContainerTransferExampleReciever(container.ContainerName, container.Port);
-                        var senderResult = await RabbitMQFileTransferer.ContainerTransferExampleSender(container.ContainerName);
+
+                        var recieverResult = "";
+                        var senderResult = "";
+
+                        if (conResult.StartsWith("Конфигурационный файл в контейнере:"))
+                        {
+                            recieverResult = await RabbitMQFileTransferer.ContainerTransferExampleReciever(container.ContainerName, container.Port);
+                            senderResult = await RabbitMQFileTransferer.ContainerTransferExampleSender(container.ContainerName);
+                        }
 
                         statusTextBox.Text += $"Контейнер: {container.ContainerName} \n{conResult}\n{recieverResult}\n{senderResult}\n\n";
                     }
@@ -69,6 +86,7 @@ namespace Бокеры_сообщений
                     }
                 }
             }
+            waiForm.Close();
         }
 
         private void save_log_Click(object sender, EventArgs e)
