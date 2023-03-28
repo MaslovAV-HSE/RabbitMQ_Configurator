@@ -108,8 +108,8 @@ namespace Бокеры_сообщений
             else
             {
                 var Final = new FinalStep();
-                Final.Show();
                 this.Close();
+                Final.Show();
             }        
         }
 

@@ -27,13 +27,13 @@ namespace Бокеры_сообщений
             Application.Exit();
         }
 
-        private void FinalStep_Load(object sender, EventArgs e)
+        private async void FinalStep_Load(object sender, EventArgs e)
         {
             label1.Text += $" {ConfigurationHelper.configurationName}";
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
-                node_type.Text = " Сервер";
+                node_type.Text = "Сервер";
             else
-                node_type.Text = " Контейнер";
+                node_type.Text = "Контейнер";
 
             var conFile = RabbitMQConfigurationFormatter.CreateConfigurationFile();
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
@@ -45,20 +45,28 @@ namespace Бокеры_сообщений
                     var recieverResult = RabbitMQFileTransferer.ServerTransferExampleReciever(server.IpAddress, server.UserName, server.Password, server.Port);
                     var senderResult = RabbitMQFileTransferer.ServerTransferExampleSender(server.IpAddress, server.UserName, server.Password, server.Port);
 
-                    statusTextBox.Text += $"server: {server.IpAddress} \n{conResult}\n{recieverResult}\n{senderResult}";
+                    statusTextBox.Text += $"Сервер: {server.IpAddress} \n{conResult}\n{recieverResult}\n{senderResult}\n\n";
                 }
             }
             else
             {
-                foreach (var conteiner in ConfigurationHelper.containerList)
+                foreach (var container in ConfigurationHelper.containerList)
                 {
-                    var content = $"listeners.tcp.default = {conteiner.Port}" + "\n" + conFile;
-                    var conResult = RabbitMQFileTransferer.ContainerTransferConfigurationFile(conteiner.ContainerName, content);
-                    var recieverResult = RabbitMQFileTransferer.ContainerTransferExampleReciever(conteiner.ContainerName, conteiner.Port);
-                    var senderResult = RabbitMQFileTransferer.ContainerTransferExampleSender(conteiner.ContainerName);
-                    
+                    var content = $"listeners.tcp.default = {container.Port}" + "\n" + conFile;
+                    statusTextBox.Text += "Для использования настроенных серверов RabbitMQ в контейнерах необходимо сначала их перезагрузить\n\n";
 
-                    statusTextBox.Text += $"conteiner: {conteiner.ContainerName} \n{conResult}\n{recieverResult}\n{senderResult}";
+                    try
+                    {
+                        var conResult = await RabbitMQFileTransferer.ContainerTransferConfigurationFile(container.ContainerName, content);
+                        var recieverResult = await RabbitMQFileTransferer.ContainerTransferExampleReciever(container.ContainerName, container.Port);
+                        var senderResult = await RabbitMQFileTransferer.ContainerTransferExampleSender(container.ContainerName);
+
+                        statusTextBox.Text += $"Контейнер: {container.ContainerName} \n{conResult}\n{recieverResult}\n{senderResult}\n\n";
+                    }
+                    catch
+                    {
+                        statusTextBox.Text += $"Невозможно подключиться к контейнеру {container.ContainerName}\n\n";
+                    }
                 }
             }
         }
