@@ -156,6 +156,7 @@ namespace Бокеры_сообщений
             statisticTB1.Text = ConfigurationHelper.statistcsOptions[0].Value;
 
             //основные
+            configName.Text = ConfigurationHelper.configurationName;
             if (ConfigurationHelper.NodeType.Server == ConfigurationHelper.nodeType)
                 connectionType.SelectedIndex = 0;
             else
