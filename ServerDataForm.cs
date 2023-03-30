@@ -45,7 +45,7 @@ namespace Бокеры_сообщений
                 }
                 else {
                     ConfigurationHelper.serverList.Add(
-                            new Models.ServerData(tbIP.Text, tbLog.Text, tbIP.Text, Convert.ToInt32(tbPort.Text)));
+                            new Models.ServerData(tbIP.Text, tbLog.Text, tbPass.Text, Convert.ToInt32(tbPort.Text)));
                 }
 
                     

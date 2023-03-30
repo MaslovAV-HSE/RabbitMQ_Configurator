@@ -141,15 +141,15 @@ namespace Бокеры_сообщений.Modules
             shellStream.WriteLine($"sudo -i");
             shellStream.Flush();
 
-            shellStream.WriteLine("qwerty123");
+            shellStream.WriteLine(password);
             shellStream.Flush();
 
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
 
             shellStream.WriteLine($"echo \'{content}\' > {config_file}");
             shellStream.Flush();
 
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
 
             shellStream.WriteLine("systemctl stop rabbitmq-server");
             shellStream.Flush();
@@ -173,17 +173,16 @@ namespace Бокеры_сообщений.Modules
         {
             string python_script = "import pika, sys, os\n\n" +
                     "def main():\n    " +
-                    "pika.BlockingConnection(pika.ConnectionParameters())\n    " +
                     "connection = pika.BlockingConnection(pika.ConnectionParameters(host=\"localhost\", port=" + port.ToString() +
                     "))\n    " +
                     "channel = connection.channel()\n\n    " +
-                    "channel.queue_declare(queue=\'hello\')\n\n    " +
+                    "channel.queue_declare(queue=\"hello\")\n\n    " +
                     "def callback(ch, method, properties, body):\n        " +
                     "print(\" [x] Received %r\" % body)\n\n    " +
                     "channel.basic_consume(queue=\"hello\", on_message_callback=callback, auto_ack=True)\n\n    " +
                     "print(\" [*] Waiting for messages. To exit press CTRL+C\")\n    " +
                     "channel.start_consuming()\n\n" +
-                    "if __name__ == \'__main__\':\n    " +
+                    "if __name__ == \"__main__\":\n    " +
                     "try:\n        " +
                     "main()\n    " +
                     "except KeyboardInterrupt:\n        " +
@@ -278,17 +277,16 @@ namespace Бокеры_сообщений.Modules
         {
             string python_script = "import pika, sys, os\n\n" +
                     "def main():\n    " +
-                    "pika.BlockingConnection(pika.ConnectionParameters())\n    " +
                     "connection = pika.BlockingConnection(pika.ConnectionParameters(host=\"localhost\", port=" + port.ToString() +
                     "))\n    " +
                     "channel = connection.channel()\n\n    " +
-                    "channel.queue_declare(queue=\'hello\')\n\n    " +
+                    "channel.queue_declare(queue=\"hello\")\n\n    " +
                     "def callback(ch, method, properties, body):\n        " +
                     "print(\" [x] Received %r\" % body)\n\n    " +
                     "channel.basic_consume(queue=\"hello\", on_message_callback=callback, auto_ack=True)\n\n    " +
                     "print(\" [*] Waiting for messages. To exit press CTRL+C\")\n    " +
                     "channel.start_consuming()\n\n" +
-                    "if __name__ == \'__main__\':\n    " +
+                    "if __name__ == \"__main__\":\n    " +
                     "try:\n        " +
                     "main()\n    " +
                     "except KeyboardInterrupt:\n        " +
@@ -314,7 +312,7 @@ namespace Бокеры_сообщений.Modules
             shellStream.WriteLine($"sudo -i");
             shellStream.Flush();
 
-            shellStream.WriteLine("qwerty123");
+            shellStream.WriteLine(password);
             shellStream.Flush();
             Thread.Sleep(500);
 
@@ -358,7 +356,7 @@ namespace Бокеры_сообщений.Modules
             shellStream.WriteLine($"sudo -i");
             shellStream.Flush();
 
-            shellStream.WriteLine("qwerty123");
+            shellStream.WriteLine(password);
             shellStream.Flush();
             Thread.Sleep(500);
 

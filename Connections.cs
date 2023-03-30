@@ -75,16 +75,14 @@ namespace Бокеры_сообщений
                 ServerDataForm sd = new ServerDataForm();
                 sd.Owner = this;
                 this.Hide();
-                sd.ShowDialog();
-                
+                sd.ShowDialog();             
             }
             else
             {
                 ContainerDataForm cd = new ContainerDataForm();
                 cd.Owner = this;
                 this.Hide();
-                cd.ShowDialog();
-                
+                cd.ShowDialog();              
             }
             DataUpdate();
         }
@@ -134,8 +132,8 @@ namespace Бокеры_сообщений
             if (ConfigurationHelper.nodeType == ConfigurationHelper.NodeType.Server)
             {
                 dataGridView1.Columns[0].HeaderText = "IP адрес";
-                dataGridView1.Columns[1].HeaderText = "Пароль";
-                dataGridView1.Columns[2].HeaderText = "Логин";
+                dataGridView1.Columns[1].HeaderText = "Логин";
+                dataGridView1.Columns[2].HeaderText = "Пароль";
                 dataGridView1.Columns[3].HeaderText = "Порт";
             }
             else
