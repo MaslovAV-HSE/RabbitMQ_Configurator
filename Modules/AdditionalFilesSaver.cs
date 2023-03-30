@@ -65,7 +65,7 @@ namespace Бокеры_сообщений.Modules
             }
 
             string filePath = path + $"\\{DateTime.Now}_{ConfigurationHelper.configurationName}.json";
-            string content = "";
+            string content = "{ \n";
 
             content = content + $"\"configurationName\": {JsonConvert.SerializeObject(ConfigurationHelper.configurationName, settings)},\n";
 
@@ -81,7 +81,7 @@ namespace Бокеры_сообщений.Modules
             content = content + FormatNodes();
             content = content + FormatOptions();
 
-            return content;
+            return content + "\n}";
         }
     }
 }
