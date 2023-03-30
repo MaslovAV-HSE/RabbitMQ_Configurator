@@ -275,7 +275,6 @@
             this.networkTB2.Name = "networkTB2";
             this.networkTB2.Size = new System.Drawing.Size(395, 27);
             this.networkTB2.TabIndex = 5;
-            this.networkTB2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.networkTB1_KeyPress);
             // 
             // label3
             // 
